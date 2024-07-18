@@ -30,11 +30,10 @@ namespace BookStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte>("Age")
-                        .HasColumnType("tinyint");
+                    b.Property<DateOnly>("BrithDayDate")
+                        .HasColumnType("date");
 
                     b.Property<byte[]>("ImageAuthor")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
@@ -44,7 +43,7 @@ namespace BookStore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Author", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Model.BookDetail", b =>
@@ -87,7 +86,7 @@ namespace BookStore.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("BookDetails");
+                    b.ToTable("BookDetails", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Model.BookProduct", b =>
@@ -119,7 +118,7 @@ namespace BookStore.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Model.Cart", b =>
@@ -135,7 +134,7 @@ namespace BookStore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Model.BookDetail", b =>

@@ -10,6 +10,12 @@ namespace BookStore.Helper
             CreateMap<BookDetail, BookDetailsDto>();
             CreateMap<BookDetailsDto, BookDetail>()
                 .ForMember(src => src.BookImage, opt => opt.Ignore());
+
+            CreateMap<AuthorDto, Author>()
+                .ForMember(src => src.ImageAuthor, opt => opt.Ignore());
+            CreateMap<Author,AuthorDto>()
+                .ForMember(src => src.ImageAuthor, opt => opt.Ignore());
+
         }
     }
 }

@@ -12,9 +12,9 @@ namespace BookStore.Services.Imp
             _context = context;
         }
 
-        public BookDetail AddAsync(BookDetail bookDetails)
+        public async Task<BookDetail> AddAsync(BookDetail bookDetails)
         {
-            _context.AddAsync(bookDetails);
+            await _context.AddAsync(bookDetails);
             _context.SaveChanges();
             return bookDetails;
         }

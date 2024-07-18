@@ -5,10 +5,9 @@ namespace BookStore.Dto
 {
     public class BookDetailsDto
     {
-        public int Id { get; set; }
         [MaxLength(100)]
         public string Title { get; set; }
-        [MaxLength(2000)]
+        [MaxLength(5000)]
         public string Description { get; set; }
         public double Rate { get; set; }
         [MaxLength(50)]
@@ -16,7 +15,6 @@ namespace BookStore.Dto
         [MaxLength(50)]
         public String? Genre { get; set; }
         public IFormFile? BookImage { get; set; }
-        [MaxLength(100)]
-        public String AuthorName { get; set; }
+        public int AuthorId { get; set; }
     }
 }

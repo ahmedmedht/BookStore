@@ -33,16 +33,18 @@ namespace BookStore.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook([FromForm] BookDetailsDto dto) 
         {
-            var author = _authorService.GetByNameAsync(dto.AuthorName);
+            var author = await _authorService.GetByIDAsync(dto.AuthorId);
             if (author == null)
                 return BadRequest("Author isn't found");
 
             using var dataStream = new MemoryStream();
-
+       
             await dto.BookImage.CopyToAsync(dataStream);
+
             var book=_mapper.Map<BookDetail>(dto);
+
             book.BookImage =  dataStream.ToArray();
-            _bookDetailService.AddAsync(book);
+            await _bookDetailService.AddAsync(book);
             _authorService.AddBookToAuthor(book.Author, book);
             return Ok(book);
         }
